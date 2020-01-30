@@ -135,3 +135,5 @@ C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\zh-Hant\M
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Index.cshtml.g.cs
+C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Create.cshtml.g.cs
+C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Edit.cshtml.g.cs
