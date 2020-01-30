@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Laminar.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Laminar.Data
@@ -10,7 +11,9 @@ namespace Laminar.Data
         {
         }
 
-        //public DbSet<Print> Print { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
