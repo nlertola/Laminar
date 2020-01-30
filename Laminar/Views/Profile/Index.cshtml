@@ -1,8 +1,19 @@
-﻿
+﻿@model Laminar.ViewModels.Views.ViewProfileViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "My Profile";
 }
 
-<h1>Index</h1>
-<h1>@ViewBag.User</h1>
+<div class="container">
+    <div class="col-md-12">
+        <h1>My Profile</h1>
+        <a asp-controller="Profile" asp-action="Edit" class="btn btn-sm btn-dark float-right">Edit Profile</a>
+        <div class="rounded-pill">
+            <img src="@Url.Action("GetProfilePicture", "Profile", new { id = Model.ID })" class="img-thumbnail rounded" alt="@Model.FirstName Profile Picture" />
+        </div>
+        <h3>@Model.FirstName @Model.LastName</h3>
+        <h1>My Projects</h1>
+        <a href="#" class="btn btn-sm btn-dark float-right">Create New Project</a>
+
+    </div>
+</div>
 
