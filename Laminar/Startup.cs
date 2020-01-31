@@ -17,6 +17,9 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Laminar.Data.Interfaces;
 using Laminar.Interfaces;
 using Laminar.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Laminar.Data.Models;
+using WebPWrecover.Services;
 
 namespace Laminar
 {
@@ -74,6 +77,12 @@ namespace Laminar
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IUserService), typeof(UserService));
+           // services.AddScoped(typeof(IEmailSenderService), typeof(EmailSenderService));
+
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            // using WebPWrecover.Services;
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
