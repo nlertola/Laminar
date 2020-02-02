@@ -77,7 +77,6 @@ namespace Laminar
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IUserService), typeof(UserService));
-           // services.AddScoped(typeof(IEmailSenderService), typeof(EmailSenderService));
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             // using WebPWrecover.Services;
