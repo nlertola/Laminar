@@ -3,17 +3,24 @@
     ViewData["Title"] = "My Profile";
 }
 
-<div class="container">
     <div class="col-md-12">
-        <h1>My Profile</h1>
-        <a asp-controller="Profile" asp-action="Edit" class="btn btn-sm btn-dark float-right">Edit Profile</a>
-        <div class="rounded-pill">
-            <img src="@Url.Action("GetProfilePicture", "Profile", new { id = Model.ID })" class="img-thumbnail rounded" alt="@Model.FirstName Profile Picture" />
+        <div class="align-items-center">
+            <h1 class="inline-header">My Profile</h1>
+            <a asp-controller="Profile" asp-action="Edit" class="btn btn-sm btn-dark float-right">Edit Profile</a>
         </div>
-        <h3>@Model.FirstName @Model.LastName</h3>
-        <h1>My Projects</h1>
-        <a href="#" class="btn btn-sm btn-dark float-right">Create New Project</a>
+        <div class="card">
+            <div class="card-img-top d-flex align-items-center bg-light">
+                <div>
+                    <img src="@Url.Action("GetProfilePicture", "Profile", new { id = Model.ID })" class="img-thumbnail rounded" alt="@Model.FirstName Profile Picture" />
+                </div>
+                <h3 class="col">@Model.FirstName @Model.LastName</h3>
 
+            </div>
+        </div>
+        <div class="align-items-center">
+            <h1>My Projects</h1>
+            <a href="#" class="btn btn-sm btn-dark float-right">Create New Project</a>
+        </div>
     </div>
-</div>
+
 
