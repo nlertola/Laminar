@@ -1,7 +1,11 @@
-﻿
+﻿@model ICollection<Laminar.Models.Project>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>My Projects</h1>
 
+@foreach(Project project in Model)
+{
+    <h1>Got one</h1>
+}

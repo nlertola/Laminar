@@ -21,6 +21,7 @@ namespace Laminar.ViewModels.Views
             EmailAddress = user.EmailAddress;
             ProfilePicture = user.ProfilePicture;
             ProfilePictureContentType = user.ProfilePictureContentType;
+            Projects = user.Projects.ToList();
         }
 
         public int ID { get; set; }
@@ -29,5 +30,6 @@ namespace Laminar.ViewModels.Views
         public string EmailAddress { get; set; }
         public byte[] ProfilePicture { get; set; }
         public string ProfilePictureContentType { get; set; }
+        public List<Project> Projects { get; set; }
     }
 }
