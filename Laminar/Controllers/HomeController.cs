@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using Laminar.Models;
 using Microsoft.AspNetCore.Authorization;
 
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
 namespace Laminar.Controllers
 {
     [AllowAnonymous]
@@ -27,6 +30,7 @@ namespace Laminar.Controllers
 
         public IActionResult Privacy()
         {
+            SendNewUserConfirmation().Wait();
             return View();
         }
 
@@ -34,6 +38,19 @@ namespace Laminar.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        static async System.Threading.Tasks.Task SendNewUserConfirmation()
+        {
+            var apiKey = Environment.GetEnvironmentVariable("laminar03071998");
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress("no-reply@laminar.com", "Example User");
+            var subject = "Sending with SendGrid is Fun";
+            var to = new EmailAddress("nlertola@live.com", "Nick User");
+            var plainTextContent = "and easy to do anywhere, even with C#";
+            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
         }
     }
 }

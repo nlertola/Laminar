@@ -132,8 +132,9 @@ C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\ru\Micros
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Index.cshtml.g.cs
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Create.cshtml.g.cs
 C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Razor\Views\Profile\Edit.cshtml.g.cs
+C:\Users\Nick\Documents\GitHub\Laminar\Laminar\bin\Debug\netcoreapp3.0\SendGrid.dll
+C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Nick\Documents\GitHub\Laminar\Laminar\obj\Debug\netcoreapp3.0\Laminar.MvcApplicationPartsAssemblyInfo.cache
