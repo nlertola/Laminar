@@ -7,8 +7,8 @@ namespace Laminar.Data.Enums
 {
     public enum TaskType
     {
-        Task,
-        Bug,
-        Issue,
+        Task = 1,
+        Bug = 2,
+        Issue = 3,
     }
 }

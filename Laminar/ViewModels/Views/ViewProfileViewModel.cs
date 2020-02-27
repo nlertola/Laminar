@@ -21,7 +21,7 @@ namespace Laminar.ViewModels.Views
             EmailAddress = user.EmailAddress;
             ProfilePicture = user.ProfilePicture;
             ProfilePictureContentType = user.ProfilePictureContentType;
-            Projects = user.Projects.ToList();
+            Projects = user.Projects.OrderByDescending(p => p.DateUpdated).ToList();
         }
 
         public int ID { get; set; }

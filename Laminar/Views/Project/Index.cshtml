@@ -5,7 +5,13 @@
 
 <h1>My Projects</h1>
 
-@foreach(Project project in Model)
+@foreach (Project project in Model)
 {
-    <h1>Got one</h1>
+    <div class="card">
+        <div class="bg-light">
+            <h2 class="col">@project.Title</h2>
+            <p class="col">@project.Description</p>
+            <a asp-controller="Project" asp-action="Edit" asp-route-id="@project.ID" class="btn btn-sm btn-dark float-right">Edit</a>
+        </div>
+    </div>
 }

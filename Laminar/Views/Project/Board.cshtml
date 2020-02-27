@@ -1,0 +1,13 @@
+﻿@model Laminar.ViewModels.Views.ViewProjectBoardViewModel
+@using Laminar.Models
+
+<h1>@Model.Project.Title</h1>
+<p>@Model.Project.Description</p>
+<a asp-controller="Task" asp-action="Create" asp-route-id="@Model.Project.ID" class="btn btn-sm btn-dark float-right">New Task</a>
+
+@foreach (Laminar.Models.Task task in Model.Project.Tasks)
+{
+    <h2>@task.Title</h2>
+    <a asp-controller="Task" asp-action="Edit" asp-route-id="@task.ID" class="btn btn-sm btn-dark float-right">Edit</a>
+}
+

@@ -6,6 +6,7 @@ using Laminar.Data.Interfaces;
 using Laminar.Interfaces;
 using Laminar.Models;
 using Laminar.ViewModels;
+using Laminar.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laminar.Controllers
@@ -32,7 +33,8 @@ namespace Laminar.Controllers
                 return RedirectToAction("Create", "Profile");
             }
 
-            var projects = _projectRepository.AllQueryable().Where(p => p.UserId == user.ID).ToHashSet();
+            var projects = _projectRepository.AllQueryable().Where(p => p.UserId == user.ID)
+                .OrderByDescending(p => p.DateUpdated).ToHashSet();
 
             return View(projects);
         }
@@ -74,6 +76,77 @@ namespace Laminar.Controllers
 
                 return RedirectToAction("Index");
             }
+            return View(viewModel);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            User user = _userService.GetUser(User.Identity.Name);
+
+            if (user == null)
+            {
+                return RedirectToAction("Create", "Profile");
+            }
+
+            Project project = _projectRepository.Get(id);
+            if(project == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            CreateEditProjectViewModel viewModel = new CreateEditProjectViewModel(project);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(CreateEditProjectViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = _userService.GetUser(User.Identity.Name);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Create", "Profile");
+                }
+
+                Project project = _projectRepository.Get(viewModel.ID);
+                if (project == null)
+                {
+                    RedirectToAction("Index");
+                }
+
+                project.UserId = user.ID;
+                project.Title = viewModel.Title;
+                project.Description = viewModel.Description;
+                project.DateUpdated = DateTime.Now;
+
+                _projectRepository.Update(project);
+
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
+        }
+
+        public IActionResult Board(int id)
+        {
+            User user = _userService.GetUser(User.Identity.Name);
+
+            if (user == null)
+            {
+                return RedirectToAction("Create", "Profile");
+            }
+
+            Project project = _projectRepository.Get(id);
+            if (project == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            ViewProjectBoardViewModel viewModel = new ViewProjectBoardViewModel(project);
+
             return View(viewModel);
         }
 
