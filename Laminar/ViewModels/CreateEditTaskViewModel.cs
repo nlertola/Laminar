@@ -2,6 +2,7 @@
 using Laminar.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,9 +35,15 @@ namespace Laminar.ViewModels
         public int ID { get; set; }
         public int UserId { get; set; }
         public int ProjectId { get; set; }
+
+        [Required]
         public string Title { get; set; }
         public string Description { get; set; }
+        
+        [Required]
         public CurrentTaskStatus Status { get; set; }
+
+        [Required]
         public TaskType Type { get; set; }
     }
 }

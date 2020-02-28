@@ -43,7 +43,7 @@ namespace Laminar.Controllers
             }
 
             Project project = _projectRepository.Get(id);
-            if(project == null)
+            if(project == null || project.UserId != user.ID)
             {
                 RedirectToAction("Index", "Profile");
             }
@@ -65,7 +65,7 @@ namespace Laminar.Controllers
                 }
 
                 Project project = _projectRepository.Get(viewModel.ProjectId);
-                if (project == null)
+                if (project == null || project.UserId != user.ID)
                 {
                     RedirectToAction("Index", "Profile");
                 }
@@ -99,7 +99,7 @@ namespace Laminar.Controllers
             }
 
             Models.Task task = _taskRepository.Get(id);
-            if (task == null)
+            if (task == null || task.UserId != user.ID)
             {
                 RedirectToAction("Index", "Profile");
             }
@@ -121,13 +121,13 @@ namespace Laminar.Controllers
                 }
 
                 Project project = _projectRepository.Get(viewModel.ProjectId);
-                if (project == null)
+                if (project == null || project.UserId != user.ID)
                 {
                     RedirectToAction("Index", "Profile");
                 }
 
                 Models.Task task = _taskRepository.Get(viewModel.ID);
-                if(task == null)
+                if(task == null || task.UserId != user.ID)
                 {
                     RedirectToAction("Index", "Profile");
                 }
@@ -147,6 +147,28 @@ namespace Laminar.Controllers
                 return RedirectToAction("Board", "Project", new { id = project.ID });
             }
             return View(viewModel);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Models.Task task = _taskRepository.Get(id);
+            User user = _userService.GetUser(User.Identity.Name);
+            Project project = _projectRepository.Get(task.ProjectId);
+            if (user == null)
+            {
+                return RedirectToAction("Create", "Profile");
+            }
+
+            if (task == null || project == null || 
+                project.UserId != user.ID ||
+                task.UserId != user.ID)
+            {
+                RedirectToAction("Index", "Profile");
+            }
+
+            _taskRepository.Delete(task);
+
+            return RedirectToAction("Board", "Project", new { id = project.ID });
         }
     }
 }

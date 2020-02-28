@@ -1,13 +1,53 @@
 ﻿@model Laminar.ViewModels.Views.ViewProjectBoardViewModel
 @using Laminar.Models
 
-<h1>@Model.Project.Title</h1>
-<p>@Model.Project.Description</p>
-<a asp-controller="Task" asp-action="Create" asp-route-id="@Model.Project.ID" class="btn btn-sm btn-dark float-right">New Task</a>
+    <div class="inline-header col-md-12">
+        <h1>@Model.Project.Title</h1>
+        <a asp-controller="Task" asp-action="Create" asp-route-id="@Model.Project.ID" class="btn btn-sm float-right btn-dark btn-group d-inline">New Task</a>
+        <a href="#" data-target="#delete_project" data-toggle="modal" class="btn btn-sm btn-danger float-right btn-group d-inline">Delete Project</a>
+        <p>@Model.Project.Description</p>
 
+    </div>
+<div class="col-md-12">
 @foreach (Laminar.Models.Task task in Model.Project.Tasks)
 {
-    <h2>@task.Title</h2>
-    <a asp-controller="Task" asp-action="Edit" asp-route-id="@task.ID" class="btn btn-sm btn-dark float-right">Edit</a>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="d-inline">@task.Title</h5>
+            <a asp-controller="Task" asp-action="Delete" asp-route-id="@task.ID" class="btn btn-sm btn-danger float-right d-inline">Delete</a>
+            <a asp-controller="Task" asp-action="Edit" asp-route-id="@task.ID" class="btn btn-sm btn-dark float-right d-inline">Edit</a>
+        </div>
+        <div class="card-body">
+            <p>@task.Description</p>
+        </div>
+        <div class="card-footer">
+            <p class="d-inline">Type: @task.Type</p>
+            <p class="d-inline float-right">Status: @task.Status</p>
+        </div>
+    </div>
 }
+</div>
+<!-- Project Deletion modal -->
+
+<div class="modal fade" id="delete_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Delete @Model.Project.Title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this project? This will also delete all tasks associated with this project.</p>
+            </div>
+            <div class="modal-footer">
+                <a asp-controller="Project" asp-action="Delete" asp-route-id="@Model.Project.ID" class="btn btn-sm btn-danger">Delete</a>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
