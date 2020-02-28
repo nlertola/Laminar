@@ -1,7 +1,17 @@
-﻿
+﻿@model ICollection<Laminar.Models.Project>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>My Projects</h1>
 
+@foreach (Project project in Model)
+{
+    <div class="card">
+        <div class="bg-light">
+            <h2 class="col">@project.Title</h2>
+            <p class="col">@project.Description</p>
+            <a asp-controller="Project" asp-action="Edit" asp-route-id="@project.ID" class="btn btn-sm btn-dark float-right">Edit</a>
+        </div>
+    </div>
+}

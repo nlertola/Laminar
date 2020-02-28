@@ -7,9 +7,9 @@ namespace Laminar.Data.Enums
 {
     public enum CurrentTaskStatus
     {
-        BackLog,
-        InProgress,
-        InReview,
-        Done,
+        BackLog = 1,
+        InProgress = 2,
+        InReview = 3,
+        Done = 4,
     }
 }

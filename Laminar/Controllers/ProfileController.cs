@@ -34,6 +34,7 @@ namespace Laminar.Controllers
             }
 
             ViewProfileViewModel viewModel = new ViewProfileViewModel(user);
+
             return View(viewModel);
         }
 

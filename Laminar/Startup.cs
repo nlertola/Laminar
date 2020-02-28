@@ -39,7 +39,8 @@ namespace Laminar
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<LaminarContext>(options =>
-                options.UseSqlServer(
+             options.UseLazyLoadingProxies().
+                UseSqlServer(
                     Configuration.GetConnectionString("LaminarContext")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
